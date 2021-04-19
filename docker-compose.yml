@@ -1,0 +1,15 @@
+version: '3.5'
+services:
+  server:
+    container_name: websocket-server
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: always
+    tty: true
+    links:
+      - redis
+    ports:
+      - "8000:8000"
+  redis:
+    image: redis:5.0
